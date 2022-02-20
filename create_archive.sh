@@ -1,8 +1,12 @@
 #!/bin/bash
 # read -p "Enter file name : " filename
 filename='.gitignore'
-file_archive='archives.zip'
-rm $file_archive
+file_archive='archives'
+
+# clean up the archives files.
+rm "${file_archive}.zip"
+rm "${file_archive}.tar.gz"
+
 b='#'
 result=''
 n=1
@@ -10,7 +14,7 @@ while read line; do
 # reading each line
 if [ -n "$line" ]; then
     firstCharacter=${line:0:1}
-    if [ "$firstCharacter" != "$b" ]; then
+    if [ "$firstCharacter" != "#" ]; then
       echo "Line No. $n : $line"
       result+="$line "
     else
@@ -22,5 +26,6 @@ done < $filename
 
 echo $result
 if [ -n "$result" ]; then
-zip -r $file_archive $result
+zip -r "${file_archive}.zip" $result
+tar -czvf "${file_archive}.tar.gz" $result
 fi

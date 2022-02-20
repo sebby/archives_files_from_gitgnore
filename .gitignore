@@ -1,4 +1,3 @@
 file*.txt
 files/file1.txt
-# archives.zip
-# create_archive.sh
+# Voic un commentaire dans le fichier gitignore.
