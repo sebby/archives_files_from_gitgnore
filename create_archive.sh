@@ -24,7 +24,6 @@ fi
 n=$((n+1))
 done < $filename
 
-echo $result
 if [ -n "$result" ]; then
 zip -r "${file_archive}.zip" $result
 tar -czvf "${file_archive}.tar.gz" $result
