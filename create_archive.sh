@@ -1,6 +1,6 @@
 #!/bin/bash
-# read -p "Enter file name : " filename
-filename='.gitignore'
+read -p "Enter file name [.gitignore]: " filename
+filename=${filename:-.gitignore}
 file_archive='archives'
 
 # clean up the archives files.
