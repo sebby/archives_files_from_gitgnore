@@ -8,11 +8,8 @@ n=1
 while read line; do
 # reading each line
 if [ -n "$line" ]; then
-  # @todo chercher avec des extensions
-  if [ -n "$line" ]; then
     echo "Line No. $n : $line"
     result+="$line "
-  fi
 fi
 n=$((n+1))
 done < $filename
