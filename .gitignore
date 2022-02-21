@@ -1,3 +1,4 @@
 file*.txt
-files/file1.txt
-# Voic un commentaire dans le fichier gitignore.
+files/*.txt
+# ligne commentée
+vendor/*
