@@ -3,22 +3,25 @@ read -p "Enter file name [.gitignore]: " filename
 filename=${filename:-.gitignore}
 file_archive='archives'
 
-# clean up the archives files.
+# Clean up the archives files.
 rm "${file_archive}.zip"
 rm "${file_archive}.tar.gz"
 
-b='#'
+
+# REGEX to exclude somme folders like vendor
+REGEX_IGNORE_FOLDERS="^(\#|vendor\/)"
+
+
 result=''
 n=1
 while read line; do
 # reading each line
 if [ -n "$line" ]; then
-    firstCharacter=${line:0:1}
-    if [ "$firstCharacter" != "#" ]; then
-      echo "Line No. $n : $line"
-      result+="$line "
+    if [[ $line =~ $REGEX_IGNORE_FOLDERS ]]; then
+      echo "Line $n: $line has been ignored"
     else
-      echo "This line $n: $line is not used"
+      echo "Line $n: $line has been added"
+      result+="$line "
     fi
 fi
 n=$((n+1))
